@@ -54,7 +54,7 @@
 		</form>
 			
 		<?php
-			// http://localhost/index.php?val1=11&val2=22&operation=*
+			
 			if (isset($_GET['operation']) && $val1 != '' && $val2 != '') {
 				if (!(INT)($val1) || $val1<=0  || !(INT)($val2) || $val2<=0  ) {
 					echo "Данные введены неверно!";
