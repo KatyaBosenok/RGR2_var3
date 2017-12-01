@@ -5,7 +5,8 @@
 	</head>
 	<body>
 		<?php
-			if (isset($_GET['val1'])) {
+		    
+        		if (isset($_GET['val1'])) {
 				$val1 = $_GET['val1'];
 			} else {
 				$val1 = '';
@@ -19,29 +20,24 @@
 		<form method="GET" action="index.php">
 
 			<!--
-			<input type="submit" name="operation" value="Длинна">
+			<input type="submit" name="operation" value="Длина">
 			<input type="submit" name="operation" value="Угол">
 			-->
 
 			<?php echo "x = " ?><input  type="text" 	name="val1" value="<?= htmlspecialchars($val1) ?>" size="10" 
-				<?php// if ((!preg_match("/^[0-9]+$/")),$val1) {
-				//	echo wefwete;
-				//} else {
-				//	echo "Введено недопустимое значение";}
-				?>
 			>  
 			<?php echo "y = " ?><input  type="text" name="val2" value="<?= htmlspecialchars($val2) ?>" size="10">  <br><br>
-			<select name="operation">
+			<select name="operation"> 
 			
 				<?php
 					if ($_GET['operation']) {
 						$operation = $_GET['operation'];
 					} else {
-						$operation = 'Длинна';
+						$operation = 'Длина';
 					}
 				?>
-				<option value="Длинна" <?php
-					if ($operation == 'Длинна') {
+				<option value="Длина" <?php
+					if ($operation == 'Длина') {
 						echo 'selected';
 					} ?>>Длина вектора(r)</option>
 				<option value="Угол" <?php
@@ -51,20 +47,22 @@
 
 			</select>
 			<input type="submit" value="Посчитать">
+			
 		</form>
 			
 		<?php
-			// http://localhost/index.php?val1=11&val2=22&operation=*
+			
 			if (isset($_GET['operation']) && $val1 != '' && $val2 != '') {
-				if (!(INT)($val1) || $val1<=0  || !(INT)($val2) || $val2<=0  ) {
+				if ((!(float)($val1)  || !(float)($val2)) && !($val1==0 || $val1>0 || $val1<0 )) {
 					echo "Данные введены неверно!";
 				}
 				else {
 					switch ($_GET['operation']) {
-						case "Длинна":
+						case "Длина":
 							$result = sqrt($val1*$val1 + $val2*$val2);
-							echo "<b>Длинна вектора(r) = </b>";
+							echo "<b>Длина вектора(r) = </b>";
 							echo (number_format($result, 2, ',' ,  ' '));	
+							echo "(см)";
 						break;
 						case "Угол":
 							if ($val1<0 and $val2>=0){
@@ -80,6 +78,7 @@
 							}
 							echo '<b> Полярный угол точки(p) = </b>';
 							echo (number_format($result, 2, ',' ,  ' '));	
+							echo "(радиан)";
 						break;			
 						default:
 							$result = 'Неизвестная операция';
