@@ -1,6 +1,6 @@
-<html>
+п»ї<html>
 	<head>
-		<title>Калькулятор</title>
+		<title>РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ</title>
 		<link rel="stylesheet" href="calc.css"/>
 	</head>
 	<body>
@@ -19,15 +19,15 @@
 		<form method="GET" action="index.php">
 
 			<!--
-			<input type="submit" name="operation" value="Длинна">
-			<input type="submit" name="operation" value="Угол">
+			<input type="submit" name="operation" value="Р”Р»РёРЅРЅР°">
+			<input type="submit" name="operation" value="РЈРіРѕР»">
 			-->
 
 			<?php echo "x = " ?><input  type="text" 	name="val1" value="<?= htmlspecialchars($val1) ?>" size="10" 
 				<?php// if ((!preg_match("/^[0-9]+$/")),$val1) {
 				//	echo wefwete;
 				//} else {
-				//	echo "Введено недопустимое значение";}
+				//	echo "Р’РІРµРґРµРЅРѕ РЅРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";}
 				?>
 			>  
 			<?php echo "y = " ?><input  type="text" name="val2" value="<?= htmlspecialchars($val2) ?>" size="10">  <br><br>
@@ -37,36 +37,36 @@
 					if ($_GET['operation']) {
 						$operation = $_GET['operation'];
 					} else {
-						$operation = 'Длинна';
+						$operation = 'Р”Р»РёРЅРЅР°';
 					}
 				?>
-				<option value="Длинна" <?php
-					if ($operation == 'Длинна') {
+				<option value="Р”Р»РёРЅРЅР°" <?php
+					if ($operation == 'Р”Р»РёРЅРЅР°') {
 						echo 'selected';
-					} ?>>Длина вектора(r)</option>
-				<option value="Угол" <?php
-					if ($operation == 'Угол') {
+					} ?>>Р”Р»РёРЅР° РІРµРєС‚РѕСЂР°(r)</option>
+				<option value="РЈРіРѕР»" <?php
+					if ($operation == 'РЈРіРѕР»') {
 						echo 'selected';
-					} ?>>Полярный угол точки(p)</option>
+					} ?>>РџРѕР»СЏСЂРЅС‹Р№ СѓРіРѕР» С‚РѕС‡РєРё(p)</option>
 
 			</select>
-			<input type="submit" value="Посчитать">
+			<input type="submit" value="РџРѕСЃС‡РёС‚Р°С‚СЊ">
 		</form>
 			
 		<?php
 			// http://localhost/index.php?val1=11&val2=22&operation=*
 			if (isset($_GET['operation']) && $val1 != '' && $val2 != '') {
 				if (!(INT)($val1) || $val1<=0  || !(INT)($val2) || $val2<=0  ) {
-					echo "Данные введены неверно!";
+					echo "Р”Р°РЅРЅС‹Рµ РІРІРµРґРµРЅС‹ РЅРµРІРµСЂРЅРѕ!";
 				}
 				else {
 					switch ($_GET['operation']) {
-						case "Длинна":
+						case "Р”Р»РёРЅРЅР°":
 							$result = sqrt($val1*$val1 + $val2*$val2);
-							echo "<b>Длинна вектора(r) = </b>";
+							echo "<b>Р”Р»РёРЅРЅР° РІРµРєС‚РѕСЂР°(r) = </b>";
 							echo (number_format($result, 2, ',' ,  ' '));	
 						break;
-						case "Угол":
+						case "РЈРіРѕР»":
 							if ($val1<0 and $val2>=0){
 								$result=pi()+atan($val2/$val1) ;
 							} else if ($val1<0 and $val2<0) {
@@ -78,11 +78,11 @@
 							} elseif ($val1>0)  {
 								$result=atan($val2/$val1) ;
 							}
-							echo '<b> Полярный угол точки(p) = </b>';
+							echo '<b> РџРѕР»СЏСЂРЅС‹Р№ СѓРіРѕР» С‚РѕС‡РєРё(p) = </b>';
 							echo (number_format($result, 2, ',' ,  ' '));	
 						break;			
 						default:
-							$result = 'Неизвестная операция';
+							$result = 'РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕРїРµСЂР°С†РёСЏ';
 					}
 				}
 			}
