@@ -8,11 +8,13 @@
 		    
         		if (isset($_GET['val1'])) {
 				$val1 = $_GET['val1'];
+				$val1=str_replace(",",".",$val1);
 			} else {
 				$val1 = '';
 			}
 			if (isset($_GET['val2'])) {
 				$val2 = $_GET['val2'];
+				$val2=str_replace(",",".",$val2);
 			} else {
 				$val2 = '';
 			}
