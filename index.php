@@ -8,13 +8,13 @@
 		    
         		if (isset($_GET['val1'])) {
 				$val1 = $_GET['val1'];
-				$val1=str_replace(",",".",$val1);
+				
 			} else {
 				$val1 = '';
 			}
 			if (isset($_GET['val2'])) {
 				$val2 = $_GET['val2'];
-				$val2=str_replace(",",".",$val2);
+				
 			} else {
 				$val2 = '';
 			}
@@ -53,7 +53,8 @@
 		</form>
 			
 		<?php
-			
+			$val1=str_replace(",",".",$val1);
+			$val2=str_replace(",",".",$val2);
 			if (isset($_GET['operation']) && $val1 != '' && $val2 != '') {
 				if ((!(float)($val1)  || !(float)($val2)) && !($val1==0 || $val1>0 || $val1<0 )) {
 					echo "Данные введены неверно!";
